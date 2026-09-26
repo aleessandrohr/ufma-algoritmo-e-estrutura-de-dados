@@ -49,7 +49,38 @@ int main(void) {
 
       break;
     case 2:
+      for (int i = 0; i < quantidadeDeAvaliacoesDaCafeteria; i++) {
+        printf("Avaliação na posicão %d: %d\n", i, avaliacoesDaCafeteria[i]);
+      }
+
+      do {
+        printf("Digite 1 para continuar: ");
+        scanf("%d", &opcao);
+
+      } while (opcao != 1);
+
+      break;
     case 3:
+      int avaliacaoBuscada;
+      printf("Digite a avaliação que deseja buscar: ");
+      scanf("%d", &avaliacaoBuscada);
+
+      for (int i = 0; i < quantidadeDeAvaliacoesDaCafeteria; i++) {
+        if (avaliacoesDaCafeteria[i] == avaliacaoBuscada) {
+          printf("Avaliação %d encontrada na posição %d\n", avaliacaoBuscada,
+                 i);
+        } else {
+          printf("Avaliação %d não encontrada", avaliacaoBuscada);
+        }
+      }
+
+      do {
+        printf("Digite 1 para continuar: ");
+        scanf("%d", &opcao);
+
+      } while (opcao != 1);
+
+      break;
     case 4:
       break;
     case 5:
