@@ -150,6 +150,7 @@ int main(void) {
 
           if (novaAvaliacaoValida) {
             avaliacoesDaCafeteria[valorPosicaoModificado] = novaAvaliacao;
+
             printf("\nAvaliação atualizada com sucesso.\n");
           } else {
             printf("\nA avaliação deve ser um número de 1 a 5.\n");
@@ -214,13 +215,58 @@ int main(void) {
 
       break;
     case 6:
-      break;
-    case 7:
-      printf("\nSaindo...\n");
+      printf("\n=== Relatório das avaliações ===\n");
+      printf("Quantidade de avaliações: %d\n",
+             quantidadeDeAvaliacoesDaCafeteria);
 
-      return 0;
-    default:
-      printf("\nOpção inválida. Escolha uma opção de 1 a 7.\n");
+      if (quantidadeDeAvaliacoesDaCafeteria == 0) {
+        printf("Ainda não há avaliações para calcular o relatório.\n");
+      } else {
+        int votosPorNota[5];
+        float somaDasAvaliacoes = 0;
+        int maiorAvaliacao = avaliacoesDaCafeteria[0];
+        int menorAvaliacao = avaliacoesDaCafeteria[0];
+
+        for (int i = 0; i < quantidadeDeAvaliacoesDaCafeteria; i++) {
+          int nota = avaliacoesDaCafeteria[i];
+
+          votosPorNota[nota - 1]++;
+          somaDasAvaliacoes += nota;
+
+          if (nota > maiorAvaliacao) {
+            maiorAvaliacao = nota;
+
+            if (nota < menorAvaliacao) {
+              menorAvaliacao = nota;
+            }
+          }
+
+          printf("Média das notas: %.2f\n",
+                 somaDasAvaliacoes / quantidadeDeAvaliacoesDaCafeteria);
+          printf("Votos por nota:\n");
+
+          for (int nota = 1; nota <= 5; nota++) {
+            printf("  Nota %d: %d voto(s)\n", nota, votosPorNota[nota - 1]);
+          }
+
+          printf("Maior nota: %d\n", maiorAvaliacao);
+          printf("Menor nota: %d\n", menorAvaliacao);
+        }
+
+        do {
+          printf("\nDigite 1 para voltar ao menu: ");
+          scanf("%d", &continuar);
+        } while (continuar != 1);
+
+        break;
+      case 7:
+        printf("\nSaindo...\n");
+
+        return 0;
+      default:
+        printf("\nOpção inválida. Escolha uma opção de 1 a 7.\n");
+      }
     }
-  } while (true);
-}
+    while (true)
+      ;
+  }
