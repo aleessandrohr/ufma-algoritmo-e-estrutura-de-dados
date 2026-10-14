@@ -20,17 +20,22 @@ Programa desenvolvido em linguagem C para cadastrar e gerenciar avaliações de 
 - Bibliotecas `stdio.h` e `stdbool.h`
 
 # *Como executar*
-
 Compile o programa com o GCC:
 
 ```bash
 gcc main.c -o avaliacao_cafeteria
 ```
 
-Execute no Linux:
+**Linux:**
 
 ```bash
 ./avaliacao_cafeteria
+```
+
+**Windows (CMD ou PowerShell):**
+
+```bash
+avaliacao_cafeteria.exe
 ```
 
 # *Conceitos praticados*
