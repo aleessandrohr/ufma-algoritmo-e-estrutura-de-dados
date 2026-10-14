@@ -41,8 +41,3 @@ avaliacao_cafeteria.exe
 # *Conceitos praticados*
 
 Vetores, estruturas condicionais, laços de repetição, validação de dados e operações CRUD (*Create, Read, Update, Delete*).
-
-# *Limitações*
-
-As avaliações são armazenadas em memória e não permanecem salvas após o encerramento do programa. O limite é de 10 avaliações por execução.
-
