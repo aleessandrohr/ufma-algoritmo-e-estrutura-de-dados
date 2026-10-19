@@ -24,7 +24,7 @@ int main(void) {
     int continuar;
 
     switch (opcao) {
-    case 1:
+    case 1: {
       int avaliacao;
 
       if (quantidadeDeAvaliacoesDaCafeteria >= 10) {
@@ -61,6 +61,7 @@ int main(void) {
       }
 
       break;
+    }
     case 2:
       for (int i = 0; i < quantidadeDeAvaliacoesDaCafeteria; i++) {
         printf("Avaliação na posição %d: %d\n", i, avaliacoesDaCafeteria[i]);
@@ -77,7 +78,7 @@ int main(void) {
       } while (continuar != 1);
 
       break;
-    case 3:
+    case 3: {
       int avaliacaoBuscada;
       bool avaliacaoBuscadaValida;
       bool encontrou = false;
@@ -113,6 +114,7 @@ int main(void) {
       } while (continuar != 1);
 
       break;
+    }
     case 4:
       if (quantidadeDeAvaliacoesDaCafeteria == 0) {
         printf("\nAinda não há avaliações cadastradas.\n");
@@ -222,7 +224,7 @@ int main(void) {
       if (quantidadeDeAvaliacoesDaCafeteria == 0) {
         printf("Ainda não há avaliações para calcular o relatório.\n");
       } else {
-        int votosPorNota[5];
+        int votosPorNota[5] = {0};
         float somaDasAvaliacoes = 0;
         int maiorAvaliacao = avaliacoesDaCafeteria[0];
         int menorAvaliacao = avaliacoesDaCafeteria[0];
@@ -235,38 +237,37 @@ int main(void) {
 
           if (nota > maiorAvaliacao) {
             maiorAvaliacao = nota;
-
-            if (nota < menorAvaliacao) {
-              menorAvaliacao = nota;
-            }
           }
 
-          printf("Média das notas: %.2f\n",
-                 somaDasAvaliacoes / quantidadeDeAvaliacoesDaCafeteria);
-          printf("Votos por nota:\n");
-
-          for (int nota = 1; nota <= 5; nota++) {
-            printf("  Nota %d: %d voto(s)\n", nota, votosPorNota[nota - 1]);
+          if (nota < menorAvaliacao) {
+            menorAvaliacao = nota;
           }
-
-          printf("Maior nota: %d\n", maiorAvaliacao);
-          printf("Menor nota: %d\n", menorAvaliacao);
         }
 
-        do {
-          printf("\nDigite 1 para voltar ao menu: ");
-          scanf("%d", &continuar);
-        } while (continuar != 1);
+        printf("Média das notas: %.2f\n",
+               somaDasAvaliacoes / quantidadeDeAvaliacoesDaCafeteria);
+        printf("Votos por nota:\n");
 
-        break;
-      case 7:
-        printf("\nSaindo...\n");
+        for (int nota = 1; nota <= 5; nota++) {
+          printf("  Nota %d: %d voto(s)\n", nota, votosPorNota[nota - 1]);
+        }
 
-        return 0;
-      default:
-        printf("\nOpção inválida. Escolha uma opção de 1 a 7.\n");
+        printf("Maior nota: %d\n", maiorAvaliacao);
+        printf("Menor nota: %d\n", menorAvaliacao);
       }
+
+      do {
+        printf("\nDigite 1 para voltar ao menu: ");
+        scanf("%d", &continuar);
+      } while (continuar != 1);
+
+      break;
+    case 7:
+      printf("\nSaindo...\n");
+
+      return 0;
+    default:
+      printf("\nOpção inválida. Escolha uma opção de 1 a 7.\n");
     }
-    while (true)
-      ;
-  }
+  } while (true);
+}
